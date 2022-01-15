@@ -74,8 +74,4 @@ public class Movie {
     public Set<Score> getScores() {
         return scores;
     }
-
-    public void setScores(Set<Score> scores) {
-        this.scores = scores;
-    }
 }
