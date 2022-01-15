@@ -1,10 +1,9 @@
 package dev.emanuelm.dsmovie.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "tb_movie")
@@ -17,6 +16,9 @@ public class Movie {
     private Double score;
     private Integer count;
     private String image;
+
+    @OneToMany(mappedBy = "id.movie") //it is mapping which scores are related with this movie object
+    private Set<Score> scores = new HashSet<>();
 
     public Movie(){
     }
@@ -69,5 +71,11 @@ public class Movie {
         this.image = image;
     }
 
+    public Set<Score> getScores() {
+        return scores;
+    }
 
+    public void setScores(Set<Score> scores) {
+        this.scores = scores;
+    }
 }
